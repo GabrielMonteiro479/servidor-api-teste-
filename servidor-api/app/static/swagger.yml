@@ -1,0 +1,128 @@
+swagger: '2.0'
+info:
+  title: 'Servidor'
+  description: 'API para manter dados de servidor.'
+  version: '1.0.0'
+  contact:
+    email: 'unb_sgrh@dpu.def.br'
+host: 'dsvservicos.dpu.def.br:8762'
+basePath: '/servidor-api'
+schemes:
+  - 'http'
+paths:
+  /servidores/:
+    get:
+      tags:
+        - 'servidor'
+      summary: 'Lista todos os servidores'
+      operationId: 'listAll'
+      produces:
+        - 'application/json'
+      responses:
+        '200':
+          description: 'Sucesso'
+          schema:
+            type: 'array'
+            items:
+              $ref: '#/definitions/Servidor'
+  /servidores/{matricula}:
+    get:
+      tags:
+        - 'servidor'
+      summary: 'Recupera um servidor pela matrícula'
+      operationId: 'getOne'
+      produces:
+        - 'application/json'
+      parameters:
+        - name: 'matricula'
+          in: 'path'
+          description: 'Matrícula do servidor'
+          required: true
+          type: 'integer'
+          format: 'int64'
+      responses:
+        '200':
+          description: 'Sucesso'
+          schema:
+              $ref: '#/definitions/Servidor'
+        '404':
+          description: 'Não encontrado'
+  /servidores/att/{matricula}:
+    put:
+      summary: 'Atualiza os dados servidor, da matrícula informada'
+      tags:
+        - 'servidor'
+      operationId: 'updateServidor'
+      produces:
+        - 'application/json'
+      parameters:
+        - name: 'matricula'
+          in: 'path'
+          description: 'Matrícula do servidor'
+          required: true
+          type: 'integer'
+          format: 'int64'
+      responses:
+        '200':
+          description: 'Sucesso'
+          schema:
+            type: 'array'
+            items:
+              $ref: '#/definitions/Servidor'
+        '404':
+          description: 'Não encontrado'
+      
+definitions:
+  Servidor:
+    type: 'object'
+    required:
+      - 'matricula'
+      - 'matriculaSiape'
+      - 'nome'
+      - 'cpf'
+      - 'dataNascimento'
+      - 'sexo'
+      - 'naturalidade'
+      - 'cargo'
+      - 'situacaoFuncional'
+    properties:
+      matricula:
+        type: 'integer'
+        maxLength: 8
+      matriculaSiape:
+        type: 'integer'
+      nome:
+        type: 'string'
+        maxLength: 60
+      dataNascimento:
+        type: 'string'
+        format: 'yyyy-mm-dd'
+      nomeAnterior:
+        type: 'string'
+        maxLength: 60
+      sexo:
+        type: 'string'
+        maxLength: 1
+      cpf:
+        type: 'string'
+        maxLength: 11
+      email:
+        type: 'string'
+        maxLength: 50
+      telefone:
+        type: 'string'
+        maxLength: 25
+      naturalidade:
+        type: 'string'
+        maxLength: 35
+      nacionalidade:
+        type: 'integer'
+        maxLength: 2
+      cargo:
+        type: 'integer'
+        maxLength: 5
+      situacaoFuncional:
+        type: 'string'
+externalDocs:
+  description: 'Leia mais sobre o Swagger'
+  url: 'http://swagger.io'
