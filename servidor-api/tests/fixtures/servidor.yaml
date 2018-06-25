@@ -1,4 +1,4 @@
-- table: SERVIDORES #ou 'SER', tem que ver no codigo java
+- table: SERVIDORES 
   records:
     - MAT_SERVIDOR: 1
       MAT_SIAPE: 11

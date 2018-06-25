@@ -4,7 +4,7 @@ from app.models.servidor import Servidor
 class Servidor_dao(object):
 
     #modificar de acordo com a db
-    def lista_servidor(self):
+    def lista_servidor(self, nome):
         return Servidor.query.order_by(Servidor.nome).all()
 
     def servidor_matricula(self, matricula):
