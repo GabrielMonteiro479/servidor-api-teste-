@@ -76,4 +76,4 @@ class TestServidorDao(DBTestCase):
         servidores = Servidor_dao().servidor_cpf(2)
         self.assertEqual(len(servidor), 2)
         for s in servidores:
-            self.assertEqual(s.cpf, '3')
+            self.assertEqual(s.cpf, 3)
