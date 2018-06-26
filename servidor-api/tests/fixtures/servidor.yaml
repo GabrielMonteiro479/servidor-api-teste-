@@ -1,7 +1,7 @@
 - table: SERVIDORES 
   records:
-    - MAT_SERVIDOR: 1
-      MAT_SIAPE: 11
+    - MAT_SERVIDOR: '1'
+      MAT_SIAPE: '11'
       NOME: Nome Um
       NOME_ANTERIOR: Nome Zero
       CPF: '11111111111'
@@ -10,12 +10,12 @@
       E_MAIL: nomeum@email.com
       TELEFONE: '61111111111'
       NATURALIDADE: Brasilia
-      NACIONALIDADE: 1
-      CARGO: 1
+      NACIONALIDADE: '1'
+      CARGO: '1'
       SITUACAO_FUNC: Situacao Um
 
-    - MAT_SERVIDOR: 3
-      MAT_SIAPE: 33
+    - MAT_SERVIDOR: '3'
+      MAT_SIAPE: '33'
       NOME: Nome Tres
       NOME_ANTERIOR: Nome Dois
       CPF: '33333333333'
@@ -24,12 +24,12 @@
       E_MAIL: nometres@email.com
       TELEFONE: '61333333333'
       NATURALIDADE: Rio de Janeiro
-      NACIONALIDADE: 3
-      CARGO: 3
+      NACIONALIDADE: '3'
+      CARGO: '3'
       SITUACAO_FUNC: Situacao Tres
 
-    - MAT_SERVIDOR: 5
-      MAT_SIAPE: 55
+    - MAT_SERVIDOR: '5'
+      MAT_SIAPE: '55'
       NOME: Nome Cinco
       NOME_ANTERIOR: Nome Quatro
       CPF: '55555555555'
@@ -38,12 +38,12 @@
       E_MAIL: nomecinco@email.com
       TELEFONE: '61555555555'
       NATURALIDADE: Sao Paulo
-      NACIONALIDADE: 1
-      CARGO: 5
+      NACIONALIDADE: '1'
+      CARGO: '5'
       SITUACAO_FUNC: Situacao Cinco
 
-    - MAT_SERVIDOR: 7
-      MAT_SIAPE: 77
+    - MAT_SERVIDOR: '7'
+      MAT_SIAPE: '77'
       NOME: Nome Sete
       NOME_ANTERIOR: Nome Seis
       CPF: '77777777777'
@@ -52,6 +52,6 @@
       E_MAIL: nomesete@email.com
       TELEFONE: '61777777777'
       NATURALIDADE: Recife
-      NACIONALIDADE: 1
-      CARGO: 7
+      NACIONALIDADE: '1'
+      CARGO: '7'
       SITUACAO_FUNC: Situacao Sete

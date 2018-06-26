@@ -87,10 +87,11 @@ definitions:
       - 'situacaoFuncional'
     properties:
       matricula:
-        type: 'integer'
+        type: 'string'
         maxLength: 8
       matriculaSiape:
-        type: 'integer'
+        type: 'string'
+        maxLength: 8 #ver
       nome:
         type: 'string'
         maxLength: 60
@@ -116,13 +117,14 @@ definitions:
         type: 'string'
         maxLength: 35
       nacionalidade:
-        type: 'integer'
+        type: 'string'
         maxLength: 2
       cargo:
-        type: 'integer'
+        type: 'string'
         maxLength: 5
       situacaoFuncional:
         type: 'string'
+        maxLength: 20 #ver
 externalDocs:
   description: 'Leia mais sobre o Swagger'
   url: 'http://swagger.io'

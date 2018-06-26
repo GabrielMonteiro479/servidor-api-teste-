@@ -6,8 +6,8 @@ class Servidor(db.Model, Serializer):
   
    __tablename__ =  'SERVIDOR' 
    
-   matricula = db.Column('MAT_SERVIDOR', db.Integer, primary_key=True)
-   matriculaSiape = db.Column('MAT_SIAPE', db.Integer)
+   matricula = db.Column('MAT_SERVIDOR', db.String(8), primary_key=True)
+   matriculaSiape = db.Column('MAT_SIAPE', db.String(8))
    nome = db.Column('NOME', db.String(60))
    nomeAnterior= db.Column('NOME_ANTERIOR', db.String(60)) #FK?
    cpf = db.Column('CPF', db.String(11))
@@ -16,8 +16,8 @@ class Servidor(db.Model, Serializer):
    eMail = db.Column('E_MAIL', db.String(50)) #FK?
    telefone = db.Column('TELEFONE', db.String(25)) #FK?
    naturalidade = db.Column('NATURALIDADE', db.String(35))
-   nacionalidade = db.Column('NACIONALIDADE', db.Integer) #FK? MELHOR CANDIDATO PARA FK
-   cargo = db.Column('CARGO', db.Integer) #MELHOR CANDIDATO PARA FK
+   nacionalidade = db.Column('NACIONALIDADE', db.String(2)) #FK? MELHOR CANDIDATO PARA FK
+   cargo = db.Column('CARGO', db.String(5)) #MELHOR CANDIDATO PARA FK
    situacaoFuncional = db.Column('SITUACAO_FUNC', db.String(20)) #MELHOR CANDIDATO PARA FK
 
 def __repr__(self):
