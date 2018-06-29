@@ -14,27 +14,16 @@ class TestesIntegracao(FlaskTestCase):
 
     
     def test_list_all(self):
-        resp = self.client.get("/servidores/") #VER
+        resp = self.client.get("/servidores/")
         self.assert200(resp)
         self.assertEqual(len(resp.json), 4)
 
     #fazer alteracoes
     def test_get_one(self):
-        resp = self.client.get("/servidores/2") #VER
+        resp = self.client.get("/servidores/2")
         self.assert200(resp)
-        self.assertEqual(resp.json['matricula'], '3')
-        self.assertEqual(resp.json['matriculaSiape'], '33')
-        self.assertEqual(resp.json['nome'], 'Nome Tres')
-        self.assertEqual(resp.json['nomeAnterior'], 'Nome Dois')
-        self.assertEqual(resp.json['cpf'], '33333333333')
-        self.assertEqual(resp.json['dataNascimento'], '2018-06-26')
-        self.assertEqual(resp.json['sexo'], 'F')
-        self.assertEqual(resp.json['eMail'], 'nometres@email.com')
-        self.assertEqual(resp.json['telefone'], '61333333333')
-        self.assertEqual(resp.json['naturalidade'], 'Rio de Janeiro')
-        self.assertEqual(resp.json['nacionalidade'], '3')
-        self.assertEqual(resp.json['cargo'], '3')
-        self.assertEqual(resp.json['situacaoFuncional'], 'Situacao Tres')
+        self.assertEqual(resp.json['codigo'], '2')
+        self.assertEqual(resp.json['descricao'], "Agencia Dois")
 
     #fazer alteracoes
     def test_get_by_banco(self):
@@ -62,8 +51,8 @@ class TestServidorDao(DBTestCase):
     
     def test_get_one(self):
         servidor = Servidor_dao().servidor_matricula(2)
-        self.assertEqual(servidor.matricula, '3')
-        self.assertEqual(servidor.matriculaSiape, '33')
+        self.assertEqual(servidor.matricula, 3)
+        self.assertEqual(servidor.matriculaSiape, 33)
         self.assertEqual(servidor.nome, 'Nome Tres')
         self.assertEqual(servidor.nomeAnterior, 'Nome Dois')
         self.assertEqual(servidor.cpf, '33333333333')
@@ -72,8 +61,8 @@ class TestServidorDao(DBTestCase):
         self.assertEqual(servidor.eMail, 'nometres@email.com')
         self.assertEqual(servidor.telefone, '61333333333')
         self.assertEqual(servidor.naturalidade, 'Rio de Janeiro')
-        self.assertEqual(servidor.nacionalidade, '1')
-        self.assertEqual(servidor.cargo, '3')
+        self.assertEqual(servidor.nacionalidade, 1)
+        self.assertEqual(servidor.cargo, 3)
         self.assertEqual(servidor.situacaoFuncional, 'Situacao Tres')
 
     

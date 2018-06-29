@@ -3,15 +3,16 @@ from app.models.servidor import Servidor
 
 class Servidor_dao(object):
 
-    #modificar de acordo com a db
-    def lista_servidor(self, nome):
+    
+    def lista_servidor(self):
         return Servidor.query.order_by(Servidor.nome).all()
 
     def servidor_matricula(self, matricula):
-        return Servidor.query.get(Servidor.matricula)
+        return Servidor.query.get(matricula) #get funciona apenas para primary key
 
     def servidor_matricula_siape(self, matriculaSiape):
-        return Servidor.query.get(Servidor.matriculaSiape)
+        return Servidor.query.get(matriculaSiape)
 
     def servidor_cpf(self, cpf):
-        return Servidor.query.get(Servidor.cpf)
+    	return Servidor.query.having(Servidor.cpf==cpf) #ver na documentacao http://docs.sqlalchemy.org/en/latest/orm/query.html qual metodo usar
+        #return Servidor.query.get(cpf)
