@@ -4,7 +4,6 @@ certifi==2017.7.27.1
 chardet==3.0.4
 click==6.7
 cx-Oracle==5.3
-#cx-Oracle==6.3.1
 dnspython==1.15.0
 eureka-client==0.6.2
 Flask==0.12.2

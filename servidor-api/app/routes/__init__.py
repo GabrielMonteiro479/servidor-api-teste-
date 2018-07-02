@@ -30,7 +30,7 @@ def lista_servidor():
         return "Not Found", 404
 
 
-@app.route('/servidores/<matricula>', methods=['GET'])
+@app.route('/servidores/matricula/<matricula>', methods=['GET'])
 def servidor_matricula(matricula):
     servidor = Servidor_dao().servidor_matricula(matricula)
 
@@ -39,16 +39,16 @@ def servidor_matricula(matricula):
     else:
         return "Not Found", 404
 
-@app.route('/servidores/<matriculaSiape>', methods=['GET'])
+@app.route('/servidores/matriculaSiape/<matriculaSiape>', methods=['GET'])
 def servidor_matricula_siape(matriculaSiape):
-    servidores = Servidor_dao().servidor_matricula_siape(matriculaSiape)
+    servidor = Servidor_dao().servidor_matricula_siape(matriculaSiape)
 
-    if servidores:
-        return jsonify(Serializer.serialize_list(servidores)), 200
+    if servidor:
+        return jsonify(servidor.serialize()), 200
     else:
         return "Not Found", 404
 
-@app.route('/servidores/<cpf>', methods=['GET'])
+@app.route('/servidores/cpf/<cpf>', methods=['GET'])
 def servidor_cpf(cpf):
     servidor = Servidor_dao().servidor_cpf(cpf)
 
