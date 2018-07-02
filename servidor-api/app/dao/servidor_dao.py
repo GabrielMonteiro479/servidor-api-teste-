@@ -2,8 +2,6 @@ from app.models.servidor import Servidor
 
 
 class Servidor_dao(object):
-
-    
     def lista_servidor(self):
         return Servidor.query.order_by(Servidor.nome).all()
 
@@ -14,7 +12,8 @@ class Servidor_dao(object):
         return Servidor.query.filter(Servidor.matriculaSiape == matriculaSiape).first()
         #return Servidor.query.filter(Servidor.matriculaSiape == matriculaSiape).first()
 
-    def servidor_cpf(self, cpf):	
+    def servidor_cpf(self, cpf):
     	return Servidor.query.filter(Servidor.cpf == cpf).first()
-    	#return Servidor.query.filter_by(cpf = cpf).first()
-    
+
+    def servidores_nome(self, nome):
+    	return Servidor.query.filter(Servidor.nome.like("%" + nome.upper() + "%")).order_by(Servidor.nome).all()

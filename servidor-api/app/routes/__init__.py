@@ -56,3 +56,12 @@ def servidor_cpf(cpf):
         return jsonify(servidor.serialize()), 200
     else:
         return "Not Found", 404
+
+@app.route('/servidores/nome/<nome>', methods=['GET'])
+def servidores_nome(nome):
+    servidores = Servidor_dao().servidores_nome(nome)
+
+    if servidores:
+        return jsonify(Serializer.serialize_list(servidores)), 200
+    else:
+        return "Not Found", 404

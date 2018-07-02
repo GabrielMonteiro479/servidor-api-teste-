@@ -1,7 +1,7 @@
 from app import db
 from app.models.Serializer import Serializer
 
-#talvez tenha que acrescentar algo
+
 class Servidor(db.Model, Serializer):
   
    __tablename__ =  'SERVIDOR' 
