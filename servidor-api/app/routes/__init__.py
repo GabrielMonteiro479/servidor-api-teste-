@@ -1,7 +1,8 @@
-from flask import jsonify, send_file
+from flask import jsonify, send_file, request
 from app import app
 from app.dao.servidor_dao import Servidor_dao
 from app.models import Serializer
+from app.builder.servidor_builder import servidor_builder
 
 
 @app.route('/')
@@ -34,6 +35,7 @@ def lista_servidor():
 def servidor_matricula(matricula):
     servidor = Servidor_dao().servidor_matricula(matricula)
 
+
     if servidor:
         return jsonify(servidor.serialize()), 200
     else:
@@ -65,3 +67,16 @@ def servidores_nome(nome):
         return jsonify(Serializer.serialize_list(servidores)), 200
     else:
         return "Not Found", 404
+
+@app.route('/servidores/atualizacao/<matricula>', methods = ['PUT'])
+def atualiza (matricula):
+    data = request.get_json() if request.is_json else request.form.to_dict()
+    data.update({'matricula': matricula})
+
+    servidor = servidor_builder.build(data)
+
+    data_saved = Servidor_dao.atualiza(servidor)
+    return jsonify(data_saved.serialize())
+
+
+
