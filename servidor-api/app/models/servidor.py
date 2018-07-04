@@ -1,13 +1,13 @@
 from app import db
 from app.models.Serializer import Serializer
 
-#talvez tenha que acrescentar algo
+
 class Servidor(db.Model, Serializer):
   
    __tablename__ =  'SERVIDOR' 
    
-   matricula = db.Column('MAT_SERVIDOR', db.String(8), primary_key=True, nullable = False) #primary key
-   matriculaSiape = db.Column('MAT_SIAPE', db.String(8)) 
+   matricula = db.Column('MAT_SERVIDOR', db.String(8), primary_key=True, nullable = False)
+   matriculaSiape = db.Column('MAT_SIAPE', db.String(8))
    nome = db.Column('NOM', db.String(60), nullable = False)
    nomeAnterior= db.Column('NOM_ANT_SERV', db.String(60)) 
    cpf = db.Column('NUM_CPF', db.String(11), nullable = False)

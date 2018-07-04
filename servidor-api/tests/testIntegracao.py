@@ -18,14 +18,14 @@ class TestesIntegracao(FlaskTestCase):
         self.assert200(resp)
         self.assertEqual(len(resp.json), 4)
 
-    #fazer alteracoes
+    #?
     def test_get_one(self):
         resp = self.client.get("/servidores/2")
         self.assert200(resp)
         self.assertEqual(resp.json['codigo'], '2')
         self.assertEqual(resp.json['descricao'], "Agencia Dois")
 
-    #fazer alteracoes
+    #?
     def test_get_by_banco(self):
         resp = self.client.get("/servidores/banco/2")
         self.assert200(resp)
