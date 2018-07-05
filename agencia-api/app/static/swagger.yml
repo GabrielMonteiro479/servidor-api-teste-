@@ -1,0 +1,90 @@
+swagger: '2.0'
+info:
+  title: 'Agencia'
+  description: 'API para manter dados de agencia.'
+  version: '1.0.0'
+  contact:
+    email: 'unb_sgrh@dpu.def.br'
+host: 'dsvservicos.dpu.def.br:8762'
+basePath: '/agencia-api'
+schemes:
+  - 'http'
+paths:
+  /agencias/:
+    get:
+      tags:
+        - 'agencia'
+      summary: 'Lista todos as agencias'
+      operationId: 'listAll'
+      produces:
+        - 'application/json'
+      responses:
+        '200':
+          description: 'Sucesso'
+          schema:
+            type: 'array'
+            items:
+              $ref: '#/definitions/Agencia'
+  /agencias/{codigo}:
+    get:
+      tags:
+        - 'agencia'
+      summary: 'Recupera uma agencia pelo código'
+      operationId: 'getOne'
+      produces:
+        - 'application/json'
+      parameters:
+        - name: 'codigo'
+          in: 'path'
+          description: 'Código da agencia'
+          required: true
+          type: 'integer'
+          format: 'int64'
+      responses:
+        '200':
+          description: 'Sucesso'
+          schema:
+              $ref: '#/definitions/Agencia'
+        '404':
+          description: 'Não encontrado'
+  /agencias/banco/<codigo>:
+    get:
+      tags:
+        - 'agencia'
+      summary: 'Recupera agencias pelo código do banco'
+      operationId: 'listByServidor'
+      produces:
+        - 'application/json'
+      parameters:
+        - name: 'matricula'
+          in: 'path'
+          description: 'Código do banco'
+          required: true
+          type: 'string'
+      responses:
+        '200':
+          description: 'Sucesso'
+          schema:
+            type: 'array'
+            items:
+              $ref: '#/definitions/Agencia'
+        '404':
+          description: 'Não encontrado'
+definitions:
+  Agencia:
+    type: 'object'
+    required:
+      - 'codigo'
+      - 'descricao'
+      - 'cod_banco'
+    properties:
+      codigo:
+        type: 'integer'
+      descricao:
+        type: 'string'
+        maxLength: 50
+      cod_banco:
+        type: 'integer'
+externalDocs:
+  description: 'Leia mais sobre o Swagger'
+  url: 'http://swagger.io'

@@ -1,0 +1,14 @@
+- table: TAB_AGE
+  records:
+    - CD: 1
+      DS: Agencia Um
+      CD_BCO: 1
+    - CD: 2
+      DS: Agencia Dois
+      CD_BCO: 1
+    - CD: 3
+      DS: Agencia Um Outro Banco
+      CD_BCO: 2
+    - CD: 4
+      DS: Agencia Dois Outro Banco
+      CD_BCO: 2
