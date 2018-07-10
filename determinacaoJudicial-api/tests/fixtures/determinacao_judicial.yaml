@@ -1,0 +1,19 @@
+- model: app.models.DeterminacaoJudicial
+  records:
+    - codigo: 1
+      descricao: Decisão Liminar Um
+      data: 2013-07-01
+      data_validade: 2013-12-31
+      numero_mandado: 30
+      tipo: J
+      folhas_incidencia: T
+      numero_folha: 1
+      mes_ano_folha: 012013
+      percentual: 15.5
+    - codigo: 2
+      descricao: Decisão Liminar Dois
+      data: 2013-07-02
+      data_validade: 2013-12-31
+      numero_mandado: 32
+      tipo: J
+      folhas_incidencia: T
