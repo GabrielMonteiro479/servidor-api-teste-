@@ -1,0 +1,6 @@
+- table: FOLHA.FL_FORM_ESP_X_LIMINAR
+  records:
+    - COD_FORMULA: 1866
+      COD_LIM_JUDICIAL: 1
+    - COD_FORMULA: 1865
+      COD_LIM_JUDICIAL: 1

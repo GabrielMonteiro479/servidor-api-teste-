@@ -1,0 +1,256 @@
+swagger: '2.0'
+info:
+  title: 'Determinação Judicial'
+  description: 'API para manter dados de Determinação Judicial (Liminar/Concessão).'
+  version: '1.0.0'
+  contact:
+    email: 'unb_sgrh@dpu.def.br'
+host: 'dsvservicos.dpu.def.br:8762'
+basePath: '/determinacaoJudicial-api'
+schemes:
+  - 'http'
+paths:
+  /determinacaoJudicial/:
+    get:
+      tags:
+        - 'determinacaoJudicial'
+      summary: 'Lista todas as Determinações Judiciais'
+      operationId: 'listAll'
+      produces:
+        - 'application/json'
+      responses:
+        '200':
+          description: 'Sucesso'
+          schema:
+            type: 'array'
+            items:
+              $ref: '#/definitions/DeterminacaoJudicial'
+    post:
+      tags:
+        - 'determinacaoJudicial'
+      summary: 'Inclui uma Determinação Judicial'
+      operationId: 'add'
+      consumes:
+        - 'application/json'
+      produces:
+        - 'application/json'
+      parameters:
+        - name: 'body'
+          in: 'body'
+          description: 'Dados da nova Determinação'
+          required: true
+          schema:
+            $ref: '#/definitions/DeterminacaoJudicial'
+      responses:
+        '200':
+          description: 'Sucesso'
+          schema:
+            $ref: '#/definitions/DeterminacaoJudicial'
+  /determinacaoJudicial/{codigo}:
+    get:
+      tags:
+        - 'determinacaoJudicial'
+      summary: 'Recupera uma Determinação pelo código'
+      operationId: 'getOne'
+      produces:
+        - 'application/json'
+      parameters:
+        - name: 'codigo'
+          in: 'path'
+          description: 'Código da Determinação Judicial'
+          required: true
+          type: 'integer'
+          format: 'int64'
+      responses:
+        '200':
+          description: 'Sucesso'
+          schema:
+              $ref: '#/definitions/DeterminacaoJudicial'
+        '404':
+          description: 'Não encontrado'
+    put:
+      tags:
+        - 'determinacaoJudicial'
+      summary: 'Atualiza uma Determinação Judicial pelo código'
+      operationId: 'update'
+      consumes:
+        - 'application/json'
+      produces:
+        - 'application/json'
+      parameters:
+        - name: 'codigo'
+          in: 'path'
+          description: 'Código da Determinação'
+          required: true
+          type: 'integer'
+          format: 'int64'
+        - name: 'body'
+          in: 'body'
+          description: 'Dados novos do Determinação'
+          required: true
+          schema:
+            $ref: '#/definitions/DeterminacaoJudicial'
+      responses:
+        '200':
+          description: 'Sucesso'
+          schema:
+            type: 'object'
+            items:
+              $ref: '#/definitions/DeterminacaoJudicial'
+        '404':
+          description: 'Não encontrado'
+  /determinacaoJudicial/servidor/{matricula}:
+    get:
+      tags:
+        - 'determinacaoJudicial'
+      summary: 'Recupera uma Determinação pela matrícula do servidor'
+      operationId: 'getByServidor'
+      produces:
+        - 'application/json'
+      parameters:
+        - name: 'matricula'
+          in: 'path'
+          description: 'Matrícula do servidor'
+          required: true
+          type: 'string'
+      responses:
+        '200':
+          description: 'Sucesso'
+          schema:
+            type: 'object'
+            $ref: '#/definitions/DeterminacaoJudicial'
+        '404':
+          description: 'Não encontrado'
+  /determinacaoJudicial/dependente/{codigo}:
+    get:
+      tags:
+        - 'determinacaoJudicial'
+      summary: 'Recupera uma determinação judicial pelo código do dependente'
+      operationId: 'getByDependente'
+      produces:
+        - 'application/json'
+      parameters:
+        - name: 'codigo'
+          in: 'path'
+          description: 'Código do dependente'
+          required: true
+          type: 'integer'
+      responses:
+        '200':
+          description: 'Sucesso'
+          schema:
+            type: 'object'
+            $ref: '#/definitions/DeterminacaoJudicial'
+        '404':
+          description: 'Não encontrado'
+  /determinacaoJudicial/{codigo}/dependente:
+    post:
+      tags:
+        - 'determinacaoJudicial'
+      summary: 'Vincula uma determinação judicial a um dependente'
+      operationId: 'setDependente'
+      produces:
+        - 'application/json'
+      parameters:
+        - name: 'codigo'
+          in: 'path'
+          description: 'Código da Determinação'
+          required: true
+          type: 'integer'
+        - name: 'body'
+          in: 'body'
+          required: true
+          description: 'Dados da vinculação entre dependente e determinação'
+          type: 'object'
+          schema:
+            $ref: '#/definitions/Pensao'
+      responses:
+        '200':
+          description: 'Sucesso'
+          schema:
+            type: 'object'
+            $ref: '#/definitions/Pensao'
+        '404':
+          description: 'Não encontrado'
+definitions:
+  DeterminacaoJudicial:
+    type: 'object'
+    required:
+      - 'matricula_servidor'
+      - 'parentesco'
+      - 'codigo_dependente'
+    properties:
+      codigo:
+        type: 'integer'
+      descricao:
+        type: 'string'
+        maxLength: 100
+      data:
+        type: 'string'
+        format: 'yyyy-mm-dd'
+      data_validade:
+        type: 'string'
+        format: 'yyyy-mm-dd'
+      tipo:
+        type: 'string'
+        maxLength: 1
+        enum:
+          - 'L'
+          - 'J'
+          - 'E'
+          - 'A'
+      folhas_incidencia:
+        type: 'string'
+        maxLength: 1
+        enum:
+          - 'T'
+          - 'F'
+          - 'M'
+      numero_mandado:
+        type: 'string'
+        maxLength: 30
+      numero_folha:
+        type: 'string'
+        maxLength: 1
+      mes_ano_folha:
+        type: 'string'
+        format: 'mmyyyy'
+        maxLength: 6
+      percentual:
+        type: 'number'
+        format: 'float'
+      pensoes:
+        type: 'array'
+        items:
+          $ref: '#/definitions/Pensao'
+      formulas:
+        type: 'array'
+        items:
+          $ref: '#/definitions/Formula'
+  Pensao:
+    type: 'object'
+    required:
+      - 'codigo_dependente'
+      - 'codigo_liminar'
+      - 'matricula_servidor'
+    properties:
+      codigo_dependente:
+        type: 'integer'
+      codigo_liminar:
+        type: 'integer'
+      matricula_servidor:
+        type: 'string'
+        maxLength: 8
+  Formula:
+    type: 'object'
+    required:
+      - 'codigo'
+      - 'codigo_liminar'
+    properties:
+      codigo:
+        type: 'integer'
+      codigo_liminar:
+        type: 'integer'
+externalDocs:
+  description: 'Leia mais sobre o Swagger'
+  url: 'http://swagger.io'

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ptBR">
+<head>
+    <meta charset="UTF-8">
+    <title>API de Determinação Judicial</title>
+
+</head>
+<style>
+    body {font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: #333333}
+    dt {font-weight: bold}
+    div.title { background-color: #E4E4E4; width: 100%; height: 10vh; padding: 10px; margin: -10px; line-height: 10vh}
+</style>
+<body>
+    <div class="title">
+        <h1>API de Determinação Judicial</h1>
+    </div>
+    <p>
+    <h2>Endpoints:</h2>
+    <ul>
+        <li>GET <a href='determinacaoJudicial/'>/determinacaoJudicial/</a>: Lista de todos as determinações judiciais</li>
+        <li>GET <a href='determinacaoJudicial/3628'>/determinacaoJudicial/&ltcodigo&gt</a>: Recupera uma determinacao judicial pelo código</li>
+        <li>GET <a href='determinacaoJudicial/dependente/1153'>/determinacaoJudicial/dependente/&ltcodigo&gt</a>: Recupera ums determinacao judicial pelo código do dependente</li>
+        <li>GET <a href='determinacaoJudicial/servidor/451'>/determinacaoJudicial/servidor/&ltmatricula&gt</a>: Recupera uma determinacao judicial pela matrícula do servidor</li>
+        <li>POST /determinacaoJudicial/: Inclui nova determinacao judicial</li>
+        <li>PUT /determinacaoJudicial/&ltcodigo&gt: Atualiza uma determinacao judicial pelo código</li>
+    </ul>
+</body>
+</html>
